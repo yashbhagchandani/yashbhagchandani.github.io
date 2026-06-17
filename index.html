@@ -18,33 +18,16 @@
     --line-light: rgba(242,237,228,0.18);
   }
 
-  *, *:before, *:after {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
+  *{margin:0;padding:0;box-sizing:border-box;}
 
-  html {
-    scroll-behavior: smooth;
-    text-size-adjust: 100%;
-    -webkit-text-size-adjust: 100%;
-  }
+  html{scroll-behavior:smooth;}
 
-  body {
-    background: var(--paper);
-    color: var(--ink);
-    font-family: 'Inter', sans-serif;
-    overflow-x: hidden;
-    font-size: 16px;
-    width: 100%;
-    min-height: 100%;
-    position: relative;
-  }
-
-  /* Prevent elements from pushing out on small devices */
-  h1, h2, h3, p, a, span {
-    overflow-wrap: break-word;
-    word-wrap: break-word;
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    overflow-x:hidden;
+    font-size:16px;
   }
 
   @media (prefers-reduced-motion: reduce){
@@ -53,12 +36,7 @@
 
   a{color:inherit; text-decoration:none;}
 
-  img{
-    display:block; 
-    max-width:100%; 
-    height:auto;
-    object-fit: cover;
-  }
+  img{display:block; max-width:100%; height:auto;}
 
   .wrap{
     max-width:1280px;
@@ -92,10 +70,9 @@
     display:flex;
     align-items:center;
     justify-content:space-between;
-    padding:0 clamp(16px, 5vw, 40px);
+    padding:clamp(14px, 3vw, 22px) clamp(16px, 5vw, 40px);
     background:rgba(242,237,228,0.92);
     backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
     border-bottom:1px solid var(--line);
     height:60px;
   }
@@ -112,7 +89,6 @@
   .nav-links{
     display:flex; 
     gap:clamp(14px, 3vw, 28px);
-    align-items: center;
   }
   
   .nav-links a{
@@ -135,7 +111,7 @@
   }
   .nav-links a:hover:after{width:100%;}
   .nav-links a:hover{color:var(--rust);}
-  .nav-toggle{display:none; cursor:pointer;}
+  .nav-toggle{display:none; padding:8px 12px; cursor:pointer;}
 
   @media (max-width:900px){
     .nav-links{gap:clamp(12px, 2vw, 20px);}
@@ -149,22 +125,18 @@
       flex-direction:column;
       background:var(--paper);
       width:min(100%, 280px);
-      height:calc(100vh - 56px);
       max-height:calc(100vh - 56px);
-      padding:clamp(24px, 6vw, 40px) clamp(16px, 5vw, 24px);
-      gap:clamp(16px, 4vw, 24px);
+      padding:clamp(16px, 4vw, 24px);
+      gap:clamp(12px, 2vw, 18px);
       border-left:1px solid var(--line);
       border-bottom:1px solid var(--line);
       transform:translateX(100%);
-      transition:transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      transition:transform 0.3s ease;
       overflow-y:auto;
-      align-items: flex-start;
     }
     .nav-links.open{transform:translateX(0);}
     .nav-toggle{
       display:flex;
-      align-items:center;
-      justify-content:center;
       background:none; 
       border:1px solid var(--line);
       font-family:'JetBrains Mono',monospace;
@@ -174,19 +146,18 @@
       color:var(--ink);
       border-radius:4px;
       flex-shrink:0;
-      height:36px;
-      padding:0 12px;
     }
     .nav-toggle:active{background:rgba(22,22,26,0.05);}
   }
 
   /* ===== Hero ===== */
   .hero{
-    min-height:calc(100vh - 60px);
+    min-height:100vh;
     display:flex;
     flex-direction:column;
     justify-content:center;
-    padding:clamp(40px, 8vw, 100px) 0;
+    padding-top:clamp(80px, 15vw, 120px);
+    padding-bottom:clamp(40px, 10vw, 80px);
     position:relative;
     margin-top:60px;
   }
@@ -211,7 +182,7 @@
   }
   
   .hero h1{
-    font-size:clamp(2rem, 11vw, 7.5rem);
+    font-size:clamp(2.2rem, 13vw, 7.5rem);
     margin-bottom:0.1em;
     line-height:1;
     text-align:left;
@@ -239,7 +210,6 @@
   .hero-meta .item{
     border-left:2px solid var(--rust);
     padding-left:clamp(10px, 2vw, 14px);
-    min-width: 0;
   }
   
   .hero-meta .item .num{
@@ -257,25 +227,13 @@
     margin-top:clamp(4px, 1vw, 8px);
   }
 
-  @media (max-width:768px){
-    .hero {
-      margin-top:56px;
-      min-height: auto;
-      padding: 40px 0;
-    }
-  }
-
   @media (max-width:480px){
-    .hero{padding: 40px 0 20px;}
+    .hero{padding: 70px 0 30px;}
     .hero h1{margin-bottom:0.05em;}
     .hero-meta{grid-template-columns:1fr 1fr; gap:clamp(16px, 3vw, 24px);}
   }
-  
-  @media (max-width:350px){
-    .hero-meta {grid-template-columns:1fr;}
-  }
 
-  /* ===== Identity ticker ===== */
+  /* ===== Identity ticker (signature element) ===== */
   .ticker-band{
     background:var(--ink);
     color:var(--paper);
@@ -308,19 +266,19 @@
 
   /* ===== Section base ===== */
   section{
-    padding:clamp(60px, 10vw, 110px) 0;
+    padding:110px 0;
     border-bottom:1px solid var(--line);
   }
   .section-head{
     display:flex;
     justify-content:space-between;
     align-items:flex-end;
-    margin-bottom:clamp(32px, 6vw, 60px);
+    margin-bottom:60px;
     gap:24px;
     flex-wrap:wrap;
   }
   .section-head h2{
-    font-size:clamp(2.2rem, 6vw, 4.2rem);
+    font-size:clamp(2.4rem, 6vw, 4.2rem);
   }
   .section-head .tag{
     font-family:'JetBrains Mono',monospace;
@@ -344,9 +302,8 @@
   }
   .role-card{
     background:var(--paper);
-    padding:clamp(24px, 5vw, 36px);
+    padding:36px;
     transition:background 0.25s;
-    min-width: 0;
   }
   .role-card:hover{background:rgba(231,85,46,0.06);}
   .role-card .role-num{
@@ -358,7 +315,7 @@
   }
   .role-card h3{
     font-family:'Anton',sans-serif;
-    font-size:clamp(1.3rem, 3vw, 1.5rem);
+    font-size:1.5rem;
     text-transform:uppercase;
     margin-bottom:10px;
     letter-spacing:0.02em;
@@ -382,7 +339,7 @@
   .fitness-grid{
     display:grid;
     grid-template-columns:1.2fr 1fr;
-    gap:clamp(32px, 5vw, 50px);
+    gap:50px;
     align-items:start;
   }
   .fitness-grid p{
@@ -402,9 +359,8 @@
     display:flex;
     justify-content:space-between;
     align-items:center;
-    padding:clamp(14px, 3vw, 22px) clamp(16px, 4vw, 26px);
+    padding:22px 26px;
     border-bottom:1px solid var(--line-light);
-    gap:16px;
   }
   .stat-row:last-child{border-bottom:none;}
   .stat-row .lbl{
@@ -416,38 +372,26 @@
   }
   .stat-row .val{
     font-family:'Anton',sans-serif;
-    font-size:clamp(1.1rem, 3vw, 1.4rem);
+    font-size:1.4rem;
     text-transform:uppercase;
     color:var(--rust);
-    text-align:right;
   }
   @media (max-width:760px){
     .fitness-grid{grid-template-columns:1fr;}
-  }
-  @media (max-width:480px){
-    .stat-row{
-      flex-direction:column;
-      align-items:flex-start;
-      gap:6px;
-    }
-    .stat-row .val{
-      text-align:left;
-    }
   }
 
   /* ===== Design / media work ===== */
   .work-grid{
     display:grid;
     grid-template-columns:repeat(3,1fr);
-    gap:clamp(16px, 3vw, 24px);
+    gap:24px;
   }
   .work-card{
     border:1px solid var(--line);
-    padding:clamp(20px, 4vw, 30px) clamp(16px, 4vw, 26px);
+    padding:30px 26px;
     position:relative;
     overflow:hidden;
     transition:transform 0.25s ease, border-color 0.25s ease;
-    min-width: 0;
   }
   .work-card:hover{
     transform:translateY(-6px);
@@ -464,7 +408,7 @@
   }
   .work-card h3{
     font-family:'Anton',sans-serif;
-    font-size:clamp(1.1rem, 3vw, 1.3rem);
+    font-size:1.3rem;
     text-transform:uppercase;
     margin-bottom:8px;
   }
@@ -481,7 +425,6 @@
     color:rgba(22,22,26,0.04);
     line-height:1;
     user-select:none;
-    pointer-events: none;
   }
   @media (max-width:900px){
     .work-grid{grid-template-columns:1fr 1fr;}
@@ -502,8 +445,8 @@
     background:var(--paper);
     display:grid;
     grid-template-columns:160px 1fr;
-    gap:clamp(16px, 4vw, 30px);
-    padding:clamp(24px, 5vw, 34px) clamp(16px, 5vw, 36px);
+    gap:30px;
+    padding:34px 36px;
     align-items:start;
   }
   .venture .v-tag{
@@ -516,7 +459,7 @@
   }
   .venture h3{
     font-family:'Anton',sans-serif;
-    font-size:clamp(1.4rem, 4vw, 1.7rem);
+    font-size:1.7rem;
     text-transform:uppercase;
     margin-bottom:8px;
   }
@@ -541,7 +484,7 @@
   .riding-content{
     display:grid;
     grid-template-columns:1fr 1fr;
-    gap:clamp(32px, 5vw, 50px);
+    gap:50px;
     align-items:center;
   }
   .riding-content p{
@@ -557,15 +500,14 @@
   }
   .crew-item{
     border:1px solid rgba(242,237,228,0.35);
-    padding:clamp(14px, 3vw, 18px) clamp(16px, 4vw, 22px);
+    padding:18px 22px;
     display:flex;
     justify-content:space-between;
     align-items:center;
-    gap:16px;
   }
   .crew-item .name{
     font-family:'Anton',sans-serif;
-    font-size:clamp(1rem, 3vw, 1.1rem);
+    font-size:1.1rem;
     text-transform:uppercase;
   }
   .crew-item .role{
@@ -574,20 +516,9 @@
     letter-spacing:0.1em;
     text-transform:uppercase;
     color:rgba(242,237,228,0.7);
-    text-align:right;
   }
   @media (max-width:760px){
-    .riding-content{grid-template-columns:1fr; gap:32px;}
-  }
-  @media (max-width:480px){
-    .crew-item{
-      flex-direction:column;
-      align-items:flex-start;
-      gap:6px;
-    }
-    .crew-item .role{
-      text-align:left;
-    }
+    .riding-content{grid-template-columns:1fr;}
   }
 
   /* ===== Contact ===== */
@@ -596,7 +527,7 @@
     border-bottom:none;
   }
   .contact h2{
-    font-size:clamp(2.4rem, 8vw, 6rem);
+    font-size:clamp(2.6rem, 9vw, 6rem);
     margin-bottom:24px;
   }
   .contact h2 .accent{color:var(--rust);}
@@ -610,14 +541,14 @@
   .contact-grid{
     display:flex;
     justify-content:center;
-    gap:12px;
+    gap:18px;
     flex-wrap:wrap;
   }
   .contact-pill{
     border:1px solid var(--ink);
-    padding:clamp(10px, 3vw, 14px) clamp(20px, 5vw, 28px);
+    padding:14px 28px;
     font-family:'JetBrains Mono',monospace;
-    font-size:clamp(0.7rem, 2vw, 0.75rem);
+    font-size:0.75rem;
     letter-spacing:0.12em;
     text-transform:uppercase;
     transition:background 0.2s, color 0.2s;
@@ -908,8 +839,8 @@
   </p>
   <div class="contact-grid reveal">
     <a href="mailto:bhagchandaniy7@gmail.com" class="contact-pill">Email</a>
-    <a href="https://www.instagram.com/sololvlup_yash_monarch/" class="contact-pill" target="_blank" rel="noopener noreferrer">Instagram</a>
-    <a href="https://wa.me/917020365604" class="contact-pill" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+    <a href="https://www.instagram.com/sololvlup_yash_monarch/" class="contact-pill">Instagram</a>
+    <a href="7020365604" class="contact-pill">WhatsApp</a>
   </div>
 </section>
 
@@ -921,22 +852,8 @@
   // Mobile nav toggle
   const toggle = document.getElementById('navToggle');
   const links = document.getElementById('navLinks');
-
-  toggle.addEventListener('click', (e) => {
-    e.stopPropagation();
-    links.classList.toggle('open');
-  });
-
-  links.querySelectorAll('a').forEach(a => {
-    a.addEventListener('click', () => links.classList.remove('open'));
-  });
-
-  // Close nav when clicking outside
-  document.addEventListener('click', (e) => {
-    if (!links.contains(e.target) && !toggle.contains(e.target)) {
-      links.classList.remove('open');
-    }
-  });
+  toggle.addEventListener('click', () => links.classList.toggle('open'));
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
 
   // Scroll reveal
   const reveals = document.querySelectorAll('.reveal');
